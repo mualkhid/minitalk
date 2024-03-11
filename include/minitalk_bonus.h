@@ -3,5 +3,6 @@
 
 # include "../printf/ft_printf.h"
 # include <signal.h>
+# include <stdint.h>
 
 #endif

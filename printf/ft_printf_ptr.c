@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int	len_ptr(uintptr_t nb)
+int	len_ptr(unsigned int nb)
 {
 	int	len;
 
@@ -13,7 +13,7 @@ int	len_ptr(uintptr_t nb)
 	return (len);
 }
 
-void	ft_put_ptr(uintptr_t nb)
+void	ft_put_ptr(unsigned int nb)
 {
 	if (nb >= 16)
 	{
@@ -29,7 +29,7 @@ void	ft_put_ptr(uintptr_t nb)
 	}
 }
 
-int	ft_putptr(uintptr_t ptr)
+int	ft_putptr(unsigned int ptr)
 {
 	int	char_printed;
 

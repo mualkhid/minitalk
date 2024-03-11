@@ -34,7 +34,7 @@ int	ft_conversion(va_list vl, const char format)
 	else if (format == 's')
 		char_printed += ft_putstr(va_arg(vl, char *));
 	else if (format == 'p')
-		char_printed += ft_putptr(va_arg(vl, uintptr_t));
+		char_printed += ft_putptr(va_arg(vl, unsigned int));
 	else if (format == 'd' || format == 'i')
 		char_printed += ft_putnbr(va_arg(vl, int));
 	else if (format == 'u')
