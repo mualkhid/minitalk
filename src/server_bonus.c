@@ -1,4 +1,4 @@
-#include "../include/minitalk_bonus.h"
+#include "../include/minitalk.h"
 
 void	ft_btoa(int sig, siginfo_t *info, void *context)
 {

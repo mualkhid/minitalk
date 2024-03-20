@@ -52,7 +52,7 @@ int	main(int argc, char **argv)
 	if (argc == 3)
 	{
 		pid = ft_atoi(argv[1]);
-		while (argv[2][i] != '\0')
+		while (argv[2][i])
 		{
 			ft_atob(pid, argv[2][i]);
 			i++;
