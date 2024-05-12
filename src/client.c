@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mualkhid <mualkhid@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/21 13:32:28 by mualkhid          #+#    #+#             */
+/*   Updated: 2024/05/01 18:36:01 by mualkhid         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/minitalk.h"
 
 static int	ft_atoi(const char *str)
@@ -11,17 +23,15 @@ static int	ft_atoi(const char *str)
 	result = 0;
 	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
 		i++;
-	if (str[i] == '-')
+	if (str[i] == '-' || str[i] == '+')
 	{
-		sign = -1;
+		if (str[i] == '-')
+			sign *= -1;
 		i++;
 	}
-	else if (str[i] == '+')
-		i++;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		result *= 10;
-		result += str[i] - '0';
+		result = result * 10 + str[i] - '0';
 		i++;
 	}
 	return (result * sign);
@@ -38,23 +48,23 @@ void	ft_atob(int pid, char c)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(1000);
+		usleep(250);
 		bit++;
 	}
 }
 
-int	main(int argc, char **argv)
+int	main(int ac, char **av)
 {
 	int	pid;
 	int	i;
 
 	i = 0;
-	if (argc == 3)
+	if (ac == 3)
 	{
-		pid = ft_atoi(argv[1]);
-		while (argv[2][i])
+		pid = ft_atoi(av[1]);
+		while (av[2][i])
 		{
-			ft_atob(pid, argv[2][i]);
+			ft_atob(pid, av[2][i]);
 			i++;
 		}
 	}
@@ -63,5 +73,4 @@ int	main(int argc, char **argv)
 		ft_printf("Error\n");
 		return (1);
 	}
-	return (0);
 }

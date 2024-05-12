@@ -1,20 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_words.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mualkhid <mualkhid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/21 13:32:20 by mualkhid          #+#    #+#             */
-/*   Updated: 2024/03/21 13:32:23 by mualkhid         ###   ########.fr       */
+/*   Created: 2024/03/04 11:02:13 by mualkhid          #+#    #+#             */
+/*   Updated: 2024/03/04 11:02:14 by mualkhid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "ft_printf.h"
 
-# include "../printf/ft_printf.h"
-# include <signal.h>
-# include <stdint.h>
+void	ft_ch(char c, int *len)
+{
+	write(1, &c, 1);
+	(*len)++;
+}
 
-#endif
+void	ft_str(char *s, int *len)
+{
+	size_t	i;
+
+	i = 0;
+	if (!s)
+	{
+		write(1, "(null)", 6);
+		(*len) = (*len) + 6;
+		return ;
+	}
+	while (s[i] != '\0')
+	{
+		ft_ch(s[i], len);
+		i++;
+	}
+}

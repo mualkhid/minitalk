@@ -1,26 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mualkhid <mualkhid@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/04 11:02:08 by mualkhid          #+#    #+#             */
+/*   Updated: 2024/03/04 11:02:09 by mualkhid         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# define FT_PRINTF_H
+
 # include <stdarg.h>
-# include <stdlib.h>
+# include <stddef.h>
+# include <stdio.h>
 # include <unistd.h>
 
-void		ft_put_hex(unsigned int num, const char format);
-void		ft_put_ptr(unsigned int nb);
-int			ft_len(int n);
-int			hex_len(unsigned int num);
-int			len_ptr(unsigned int nb);
-int			ft_unsigned_len(unsigned int nb);
-int			ft_putchar(int c);
-int			ft_putstr(char *str);
-int			ft_putnbr(int n);
-int			ft_puthex(unsigned int num, const char format);
-int			ft_putptr(unsigned int ptr);
-int			ft_putunsigned(unsigned int nb);
-int			ft_conversion(va_list vl, const char format);
-int			ft_printf(const char *format, ...);
-char		*ft_char(char *s, unsigned int number, int len);
-char		*ft_itoa(int n);
-char		*ft_uitoa(unsigned int nb);
+void	ft_ch(char c, int *len);
+void	ft_str(char *s, int *len);
+void	ft_putnum(int n, int *len);
+void	ft_pointer(unsigned long pointer, int *length);
+void	ft_hexa(unsigned int x, int *len, char x_or_X);
+void	ft_unsigned_int(unsigned int u, int *len);
+int		ft_printf(const char *string, ...);
 
 #endif

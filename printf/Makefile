@@ -1,24 +1,39 @@
-SRCS =	ft_printf.c ft_printf_number_hex.c\
-		ft_printf_ptr.c ft_printf_unsigned_int.c \
-		ft_printf_int_decimal.c
-		
-OBJS = ${SRCS:.c=.o}
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mualkhid <mualkhid@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/03/04 11:02:17 by mualkhid          #+#    #+#              #
+#    Updated: 2024/03/04 11:02:28 by mualkhid         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+
 NAME = libftprintf.a
-LIBC = ar rcs
+
+SRCS	= ft_printf.c \
+	   	ft_nums.c \
+		ft_words.c \
+
+
+OBJS = $(SRCS:.c=.o)
+
 CC = cc
-RM = rm -f
+
 CFLAGS = -Wall -Wextra -Werror
 
-${NAME}: ${OBJS}
-	@${LIBC} ${NAME} ${OBJS}
+all: $(NAME)
 
-all: ${NAME}
+$(NAME): $(OBJS)
+	ar -rc $(NAME) $(OBJS)
 
 clean:
-	@${RM} ${OBJS}
+	rm -f $(OBJS)
 
 fclean: clean
-	@${RM} ${NAME}
+	rm -f $(NAME)
 
 re: fclean all
 
