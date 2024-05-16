@@ -6,15 +6,26 @@
 /*   By: mualkhid <mualkhid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 13:32:39 by mualkhid          #+#    #+#             */
-/*   Updated: 2024/05/10 10:36:38 by mualkhid         ###   ########.fr       */
+/*   Updated: 2024/05/15 14:25:59 by mualkhid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minitalk.h"
 
+void	perr(char *errmsg, int fd)
+{
+	int	offset;
+
+	offset = 0;
+	write (fd, "\nerror: ", 8);
+	while (errmsg[offset] != '\0')
+		write (fd, &errmsg[offset++], 1);
+	exit (1);
+}
+
 void	sighandle(pid_t pid)
 {
-	perror("server interupted :D");
+	perr("server interupted :D", 2);
 	kill(pid, SIGINT);
 }
 
@@ -32,6 +43,7 @@ void	ft_btoa(int sig)
 		bit = 0;
 		i = 0;
 	}
+	usleep (450);
 }
 
 int	main(int ac, char **av)

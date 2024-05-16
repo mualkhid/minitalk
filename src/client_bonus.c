@@ -6,7 +6,7 @@
 /*   By: mualkhid <mualkhid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 18:32:12 by mualkhid          #+#    #+#             */
-/*   Updated: 2024/05/12 17:27:59 by mualkhid         ###   ########.fr       */
+/*   Updated: 2024/05/15 14:09:42 by mualkhid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,9 @@ void	ft_atob(int pid, char c)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(250);
+		usleep(500);
 		bit++;
 	}
-	// kill(pid, SIGUSR2);
 }
 
 int	main(int ac, char **av)

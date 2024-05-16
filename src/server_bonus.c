@@ -6,18 +6,11 @@
 /*   By: mualkhid <mualkhid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 18:32:29 by mualkhid          #+#    #+#             */
-/*   Updated: 2024/05/12 17:40:18 by mualkhid         ###   ########.fr       */
+/*   Updated: 2024/05/15 14:10:06 by mualkhid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minitalk.h"
-#include <stdlib.h>
-
-// void	sighandle(pid_t pid)
-// {
-// 	perror("server interupted :D");
-// 	kill(pid, SIGINT);
-// }
 
 void	perr(char *errmsg, int fd)
 {
@@ -38,10 +31,9 @@ void	ft_btoa(int sig, siginfo_t *info, void *context)
 	(void)context;
 	if (sig == SIGINT)
 	{
-		if (kill(info->si_pid, SIGINT) == 0)
-			perr("server interupted :D", 2);
-		else if (kill(info->si_pid, SIGINT) == -1)
-			perr("server terminated :D", 2);
+		if (kill(info->si_pid, SIGINT) == -1)
+			perr("kill error :D", 2);
+		perr("server interupted :D", 2);
 	}
 	if (sig == SIGUSR1)
 		i |= (0x01 << bit);
@@ -56,6 +48,7 @@ void	ft_btoa(int sig, siginfo_t *info, void *context)
 		bit = 0;
 		i = 0;
 	}
+	usleep (450);
 }
 
 int	main(int ac, char **av)
@@ -76,7 +69,6 @@ int	main(int ac, char **av)
 	act.sa_flags = 0;
 	while (ac == 1)
 	{
-		// signal(SIGINT, sighandle);
 		sigaction(SIGINT, &act, NULL);
 		sigaction(SIGUSR1, &act, NULL);
 		sigaction(SIGUSR2, &act, NULL);
